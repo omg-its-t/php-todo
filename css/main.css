@@ -1,0 +1,20 @@
+*{
+    font-family: 'Asap', sans-serif;
+    box-sizing: border-box;
+}
+
+main{
+    background-color: red; /* For browsers that do not support gradients */
+    background-image: linear-gradient(#F26627, #F9A26C, #EFEEEE, #9BD7D1, #325D79);
+    height: 50vh;
+    margin:20px auto;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 2%;
+}
+
+a{
+    text-decoration: none;
+    border-bottom: 1px dashed #EFEEEE;
+}
