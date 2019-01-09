@@ -1,20 +1,71 @@
 *{
     font-family: 'Asap', sans-serif;
     box-sizing: border-box;
+    color: #F2F1EF;
 }
 
 main{
-    background-color: red; /* For browsers that do not support gradients */
-    background-image: linear-gradient(#F26627, #F9A26C, #EFEEEE, #9BD7D1, #325D79);
-    height: 50vh;
+    background-color: #48929B; /* For browsers that do not support gradients */
+    /*background-image: linear-gradient(#F26627, #F9A26C, #EFEEEE); */
     margin:20px auto;
     width: 100%;
     max-width: 500px;
     padding: 20px;
-    border-radius: 2%;
+    border-radius: 1%;
+    box-shadow: -3px -3px 2px rgba(0,0,0,.5);
 }
 
-a{
-    text-decoration: none;
-    border-bottom: 1px dashed #EFEEEE;
+main h1{
+    margin-top: 10px;
+}
+
+.items{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.items .done-btn{
+    display: inline-block;
+    font-size: .8em;
+    background-color: #95A5A6;
+    border: 0;
+    padding: 2px 2px;
+    margin: 2px 2px
+}
+.items li,
+.item-add .item-input{
+    border:0;
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0;
+}
+
+.item-input:focus{
+    outline:none;
+}
+
+.item-input{
+    background-color: #48929B;
+    color: #F2F1EF;
+}
+
+input[type="text"].item-input::-webkit-input-placeholder {
+    color: #F2F1EF;
+    font-size: 1.2em;
+  }
+  
+a i{
+      margin: 0 4px;
+  }
+
+#remove i{
+      color: red;
+  }
+
+#mark-complete i{
+    color: green;
+}
+
+.items .item.done{
+    text-decoration: line-through;
 }
