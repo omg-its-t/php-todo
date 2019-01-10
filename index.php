@@ -26,7 +26,7 @@
         </ul>
         <form class="item-add" action="add.php" method="post" autocomplete="off">
             <input class="item-input" type="text" name="item-name" placeholder="Enter you todo list item here.">
-            <input type="submit" value="Add">
+            <input class="btn" type="submit" value="+ Add">
         </form>
     </main>
   </body>
