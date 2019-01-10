@@ -1,3 +1,27 @@
+<?php
+
+require_once 'app/init.php';
+
+//creating a prepared statement to grab all the items
+$itemsQuery = $db->prepare("
+    SLECT id, name, done
+    FROM items
+    WHERE user = 1
+");
+//run the query and add to array
+$itemsQuery->execute([
+    'user' => $_SESSION['user_id']
+]);
+
+//if this is positive number set to itemsQuery, otherwise set it to an empty array
+$items = $itemsQuery->rowCount() ? $itemsQuery : [];
+
+foreach($items as $item){
+    echo $item['name'], '<br>';
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en" >
   <head>
@@ -19,9 +43,6 @@
             <li><span class="item">Make Lunch</span>
                 <a href="#" id="mark-complete"><i class="fas fa-check"></i></a>
                 <a href="#" id="remove"><i class="fas fa-times"></i></a>
-            </li>
-            <li>
-                <span class="item done">Go to meeting</span>
             </li>
         </ul>
         <form class="item-add" action="add.php" method="post" autocomplete="off">
