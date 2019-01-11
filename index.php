@@ -35,17 +35,25 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
 
     <main>
         <h1>TODO:</h1>
-        <ul class="items">
-                <?php foreach($items as $item){
-                    if ($item['done']){
-                        echo '<li><span class="item done">'.$item['name'], '</span><a href="#" id="remove"><i class="fas fa-times"></i></a></li>';
-                    }
-                    else{
-                        echo '<li><span class="item">'.$item['name'], '</span><a href="#" id="mark-complete"><i class="fas fa-check"></i></a><a href="#" id="remove"><i class="fas fa-times"></i></a></li>';
-                    }
-                }
-                ?>
-        </ul>
+        <?php if ($items):?>
+            <ul class="items">
+                <?php foreach($items as $item):?>
+                    <li>
+                        <!-- if the item is done display strikethrough text and remove check mark -->
+                        <span class="item<?php if ($item['done']) echo ' done'?>"><?php echo $item['name']; ?></span>
+                        <?php if (!$item['done']):?> 
+                            <a href="app/mark.php?as=done&<?php echo $item['id'];?>" id="mark-complete"><i class="fas fa-check"></i></a>
+                        <?php endif;?>
+                        <a href="#" id="remove"><i class="fas fa-times"></i></a>
+                    </li>
+                <?php endforeach;?>
+            </ul>
+        <?php else: ?>
+            <p>You're List is empty. Enjoy your day!</p>
+        <?php endif; ?>
+
+
+
         <form class="item-add" action="app/add.php" method="post" autocomplete="off">
             <input class="item-input" type="text" name="item-name" placeholder="Enter you todo list item here.">
             <input class="btn" type="submit" value="+ Add">
