@@ -16,12 +16,6 @@ $itemsQuery->execute([
 //if this is positive number set to itemsQuery, otherwise set it to an empty array
 $items = $itemsQuery->rowCount() ? $itemsQuery : [];
 
-print_r($items);
-
-foreach($items as $item){
-    echo $item['name'], '<br>';
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -42,12 +36,17 @@ foreach($items as $item){
     <main>
         <h1>TODO:</h1>
         <ul class="items">
-            <li><span class="item">Make Lunch</span>
-                <a href="#" id="mark-complete"><i class="fas fa-check"></i></a>
-                <a href="#" id="remove"><i class="fas fa-times"></i></a>
-            </li>
+                <?php foreach($items as $item){
+                    if ($item['done']){
+                        echo '<li><span class="item done">'.$item['name'], '</span><a href="#" id="remove"><i class="fas fa-times"></i></a></li>';
+                    }
+                    else{
+                        echo '<li><span class="item">'.$item['name'], '</span><a href="#" id="mark-complete"><i class="fas fa-check"></i></a><a href="#" id="remove"><i class="fas fa-times"></i></a></li>';
+                    }
+                }
+                ?>
         </ul>
-        <form class="item-add" action="add.php" method="post" autocomplete="off">
+        <form class="item-add" action="app/add.php" method="post" autocomplete="off">
             <input class="item-input" type="text" name="item-name" placeholder="Enter you todo list item here.">
             <input class="btn" type="submit" value="+ Add">
         </form>
