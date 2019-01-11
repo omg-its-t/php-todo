@@ -4,9 +4,9 @@ require_once 'app/init.php';
 
 //creating a prepared statement to grab all the items
 $itemsQuery = $db->prepare("
-    SLECT id, name, done
+    SELECT id, name, done
     FROM items
-    WHERE user = 1
+    WHERE user = :user
 ");
 //run the query and add to array
 $itemsQuery->execute([
@@ -15,6 +15,8 @@ $itemsQuery->execute([
 
 //if this is positive number set to itemsQuery, otherwise set it to an empty array
 $items = $itemsQuery->rowCount() ? $itemsQuery : [];
+
+print_r($items);
 
 foreach($items as $item){
     echo $item['name'], '<br>';
