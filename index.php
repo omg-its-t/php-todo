@@ -41,8 +41,11 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
                     <li>
                         <!-- if the item is done display strikethrough text and remove check mark -->
                         <span class="item<?php if ($item['done']) echo ' done'?>"><?php echo $item['name']; ?></span>
+                        
                         <?php if (!$item['done']):?> 
                             <a href="app/mark.php?as=done&id=<?php echo $item['id'];?>" id="mark-complete"><i class="fas fa-check"></i></a>
+                        <?php else:?> 
+                            <a href="app/mark.php?as=undone&id=<?php echo $item['id'];?>" id="mark-incomplete"><i class="fas fa-redo"></i></a>
                         <?php endif;?>
                         <a href="#" id="remove"><i class="fas fa-times"></i></a>
                     </li>

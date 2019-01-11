@@ -67,7 +67,10 @@ a i{
 
 #mark-complete i{
     color: green;
-}
+    }
+#mark-incomplete i{
+    color: black;
+    }
 
 .items .item.done{
     text-decoration: line-through;

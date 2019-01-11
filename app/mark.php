@@ -23,6 +23,20 @@ if(isset($_GET['as'], $_GET['id'])){
                 'user' => $_SESSION['user_id']
             ]);
         break;
+
+        case 'undone':
+            $doneQuery = $db->prepare("
+                UPDATE items
+                SET done = 0 
+                WHERE id = :id
+                AND user = :user
+            ");
+            //to make sure same user is updating own item we take the sessions user id var
+            $doneQuery->execute([
+                'id' => $id,
+                'user' => $_SESSION['user_id']
+            ]);
+        break;
     }
 }
 header('Location: ../index.php');
