@@ -47,7 +47,7 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
                         <?php else:?> 
                             <a href="app/mark.php?as=undone&id=<?php echo $item['id'];?>" id="mark-incomplete"><i class="fas fa-redo"></i></a>
                         <?php endif;?>
-                        <a href="#" id="remove"><i class="fas fa-times"></i></a>
+                        <a href="app/delete.php?&id=<?php echo $item['id'];?>" id="remove"><i class="fas fa-times"></i></a>
                     </li>
                 <?php endforeach;?>
             </ul>
